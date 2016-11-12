@@ -23,5 +23,7 @@
     "url": "https://github.com/jeffry1829/online_mp4_duration/issues"
   },
   "homepage": "https://github.com/jeffry1829/online_mp4_duration#readme",
-  "dependencies": {}
+  "dependencies": {
+    "http-range": "^1.0.0"
+  }
 }
