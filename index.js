@@ -11,14 +11,18 @@ function run(url, cb){
     };
     request(options, function(err, res, body){
         if(err){
-            console.log(err);
+            cb(err);
             return;
         }
-        var buf = new Buffer(body, 'binary');
-        var time_scale = buf.slice(0,4).readInt32BE();
-        var duration = buf.slice(4,8).readInt32BE();
-        var result = duration/time_scale;
-        console.log('time in sec => '+result);
-        cb(result);
+        try{
+            var buf = new Buffer(body, 'binary');
+            var time_scale = buf.slice(0,4).readInt32BE();
+            var duration = buf.slice(4,8).readInt32BE();
+            var result = duration/time_scale;
+            console.log('time in sec => '+result);
+            cb(null, result);
+        }catch(err){
+            cb(err);
+        }
     });
 }
