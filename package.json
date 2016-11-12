@@ -1,0 +1,30 @@
+{
+  "name": "online_mp4_duration",
+  "version": "1.0.0",
+  "description": "get online mp4 file's duration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffry1829/online_mp4_duration.git"
+  },
+  "keywords": [
+    "online",
+    "request",
+    "mp4",
+    "metadata",
+    "duration"
+  ],
+  "author": "jeffry1829@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeffry1829/online_mp4_duration/issues"
+  },
+  "homepage": "https://github.com/jeffry1829/online_mp4_duration#readme",
+  "dependencies": {
+    "http-range": "^1.0.0",
+    "request": "^2.78.0"
+  }
+}
