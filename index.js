@@ -2,18 +2,20 @@ var http = require('http');
 function run(url, cb){
     var req = http.request(url, function(res){
         res.on('readable', function(){
-            var chunk = res.read(52);
+            var chunk = res.read();
             if(chunk === null) return;
-            console.log(chunk);
-            req.abort();
-            try{
-                var buf = new Buffer(chunk);
-                var time_scale = buf.slice(44,48).readInt32BE();
-                var duration = buf.slice(48,52).readInt32BE();
-                var result = duration/time_scale;
-                cb(null, result);
-            }catch(err){
-                cb(err);
+            var offset;
+            if(offset = chunk.indexOf(new Buffer([0x6D, 0x76, 0x68, 0x64])) !== -1){
+                req.abort();
+                try{
+                    var buf = new Buffer(chunk);
+                    var time_scale = buf.slice(offset+16,offset+20).readInt32BE();
+                    var duration = buf.slice(offset+20,offset+24).readInt32BE();
+                    var result = duration/time_scale;
+                    cb(null, result);
+                }catch(err){
+                    cb(err);
+                }
             }
         });
     });
