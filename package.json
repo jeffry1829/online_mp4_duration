@@ -1,6 +1,6 @@
 {
   "name": "online_mp4_duration",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "get online mp4 file's duration",
   "main": "index.js",
   "scripts": {
