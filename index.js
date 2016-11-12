@@ -5,7 +5,7 @@ function run(url, cb){
             var chunk = res.read();
             if(chunk === null) return;
             var offset;
-            if(offset = chunk.indexOf(new Buffer([0x6D, 0x76, 0x68, 0x64])) !== -1){
+            if((offset = chunk.indexOf(new Buffer([0x6D, 0x76, 0x68, 0x64]))) !== -1){
                 req.abort();
                 try{
                     var buf = new Buffer(chunk);
