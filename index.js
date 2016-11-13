@@ -1,6 +1,6 @@
 var http = require('http');
 var urlp = require('url').parse;
-var range = new require('http-range').Range('bytes', '-1024');
+var range = new require('http-range').Range('bytes', '-2000');
 function run(url, cb){
     var req = http.request(url, function(res){
         var count = 0;
