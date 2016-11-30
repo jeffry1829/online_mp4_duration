@@ -3,10 +3,6 @@ var https_anc = require('follow-redirects').https;
 var urlp = require('url').parse;
 var Range = require('http-range').Range;
 var range = new Range('bytes', '-10240');
-var queue = require('queue');
-var q = queue({
-    concurrency: 1
-});
 function run(url, cb){
     var http;
     var protocol = urlp(url).protocol;
