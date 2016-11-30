@@ -1,6 +1,7 @@
-var http = require('http');
+var http = require('follow-redirects').http;
 var urlp = require('url').parse;
-var range = new require('http-range').Range('bytes', '-2000');
+var Range = require('http-range').Range;
+var range = new Range('bytes', '-10240');
 function run(url, cb){
     var req = http.request(url, function(res){
         var count = 0;
@@ -21,8 +22,10 @@ function run(url, cb){
                     cb(err);
                 }
             }else{
-                if(count>1024){
+                if(count>10240){
                     req_tail(url, cb);
+                    req.abort();
+                    return;
                 }
             }
         });
@@ -45,12 +48,15 @@ function req_tail(url, cb){
     var req = http.request(options, function(res){
         if(res.statusCode !== 206){
             cb('can\'t get duration in an easy way...');
+            req.abort();
+            return;
         }
+        var count = 0;
         res.on('readable', function(){
             var chunk = res.read();
             var offset;
-            count+=chunk.length;
             if(chunk === null) return;
+            count+=chunk.length;
             if((offset = chunk.indexOf(new Buffer([0x6D, 0x76, 0x68, 0x64]))) !== -1){
                 req.abort();
                 try{
@@ -65,6 +71,8 @@ function req_tail(url, cb){
             }else{
                 if(count > 1024){
                     cb('can\'t get duration in an easy way');
+                    req.abort();
+                    return;
                 }
             }
         });

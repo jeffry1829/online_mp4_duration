@@ -1,6 +1,6 @@
 {
   "name": "online_mp4_duration",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "get online mp4 file's duration",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/jeffry1829/online_mp4_duration#readme",
   "dependencies": {
+    "follow-redirects": "^1.1.0",
     "http-range": "^1.0.0"
   }
 }
