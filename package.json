@@ -25,6 +25,7 @@
   "homepage": "https://github.com/jeffry1829/online_mp4_duration#readme",
   "dependencies": {
     "follow-redirects": "^1.1.0",
-    "http-range": "^1.0.0"
+    "http-range": "^1.0.0",
+    "queue": "^4.0.0"
   }
 }

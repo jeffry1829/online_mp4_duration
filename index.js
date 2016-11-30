@@ -1,8 +1,20 @@
-var http = require('follow-redirects').http;
+var http_anc = require('follow-redirects').http;
+var https_anc = require('follow-redirects').https;
+var http;
 var urlp = require('url').parse;
 var Range = require('http-range').Range;
 var range = new Range('bytes', '-10240');
+var queue = require('queue');
+var q = queue();
 function run(url, cb){
+    var protocol = urlp(url).protocol;
+    if(protocol === 'https:'){
+        http = https_anc;
+    }else if(protocol === 'http:'){
+        http = http_anc;
+    }else{
+        cb('it seems that the url is not http nor https');
+    }
     var req = http.request(url, function(res){
         var count = 0;
         res.on('readable', function(){
