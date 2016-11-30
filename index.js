@@ -69,7 +69,7 @@ function req_tail(url, cb){
                     cb(err);
                 }
             }else{
-                if(count > 1024){
+                if(count > 10240){
                     cb('can\'t get duration in an easy way');
                     req.abort();
                     return;
