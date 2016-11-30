@@ -1,12 +1,14 @@
 var http_anc = require('follow-redirects').http;
 var https_anc = require('follow-redirects').https;
-var http;
 var urlp = require('url').parse;
 var Range = require('http-range').Range;
 var range = new Range('bytes', '-10240');
 var queue = require('queue');
-var q = queue();
+var q = queue({
+    concurrency: 1
+});
 function run(url, cb){
+    var http;
     var protocol = urlp(url).protocol;
     if(protocol === 'https:'){
         http = https_anc;
@@ -35,7 +37,7 @@ function run(url, cb){
                 }
             }else{
                 if(count>10240){
-                    req_tail(url, cb);
+                    req_tail(http, url, cb);
                     req.abort();
                     return;
                 }
@@ -47,7 +49,7 @@ function run(url, cb){
         console.log('problem with request: '+e.message);
     });
 }
-function req_tail(url, cb){
+function req_tail(http, url, cb){
     var options = {
         hostname: urlp(url).hostname,
         port: urlp(url).port,
