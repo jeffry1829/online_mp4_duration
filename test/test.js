@@ -8,7 +8,7 @@ describe('online_mp4_duration', function(){
                 assert.equal(duration, 13.504);
                 done();
             });
-        }).timeout(10000);
+        }).timeout(100000);
     });
     describe('https', function(){
         it('should be 203.91763333333333sec', function(done){
@@ -17,6 +17,6 @@ describe('online_mp4_duration', function(){
                 assert.equal(duration, 203.91763333333333);
                 done();
             });
-        }).timeout(10000);
+        }).timeout(100000);
     });
 });
