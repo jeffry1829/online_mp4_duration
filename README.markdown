@@ -1,4 +1,4 @@
-#Online_mp4_duration  
+#Online_mp4_duration [![Build Status](https://travis-ci.org/jeffry1829/online_mp4_duration.svg?branch=master)](https://travis-ci.org/jeffry1829/online_mp4_duration)  
 This module can get online .mp4 file's duration  
 ##Usage  
 ```npm install online_mp4_duration```  

@@ -4,7 +4,7 @@
   "description": "get online mp4 file's duration",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
