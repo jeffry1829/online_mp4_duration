@@ -73,7 +73,7 @@ function req_head(http, url, full_scan, cb){
             var chunk = res.read();
             var offset;
             if(chunk === null){
-                cb('no mp3 header found');
+                cb('no mp4 header found');
                 req.abort();
                 return;
             }
@@ -91,7 +91,7 @@ function req_head(http, url, full_scan, cb){
                 }
             }else{
                 if(count >= 10240 && !full_scan){
-                    cb('can\'t get duration in an easy way(no mp3 header found)');
+                    cb('can\'t get duration in an easy way(no mp4 header found)');
                     req.abort();
                     return;
                 }

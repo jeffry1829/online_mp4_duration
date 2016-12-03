@@ -12,12 +12,12 @@ describe('online_mp4_duration', function(){
                 done();
             });
         }).timeout(100000);
-        it('should return no mp3 header found', function(done){
+        it('should return no mp4 header found', function(done){
             omd({
                     url: 'http://electron.atom.io/docs/tutorial/quick-start/',
                     full_scan: true
                 }, function(err,duration){
-                assert.equal(err, 'no mp3 header found');
+                assert.equal(err, 'no mp4 header found');
                 done();
             });
         }).timeout(100000);
