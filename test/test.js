@@ -14,7 +14,7 @@ describe('online_mp4_duration', function(){
         }).timeout(100000);
         it('should return no mp3 header found', function(done){
             omd({
-                    url: 'http://stackoverflow.com/questions/1307929/javascript-dom-load-events-execution-sequence-and-document-ready',
+                    url: 'http://electron.atom.io/docs/tutorial/quick-start/',
                     full_scan: true
                 }, function(err,duration){
                 assert.equal(err, 'no mp3 header found');
